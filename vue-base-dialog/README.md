@@ -21,7 +21,7 @@ Vue.use(VueBaseDialog)
 ```
 <template>
   <div>
-    <vue-base-dialog ref="VueBaseDialog" :dialogConfig="dialogConfig">
+    <vue-base-dialog ref="VueBaseDialog" :dialogConfig="dialogConfig" @close="dialogClose" @closed="dialogClosed">
       <!-- 这里是弹框内容 -->
     </vue-base-dialog>
   </div>
@@ -38,6 +38,14 @@ Vue.use(VueBaseDialog)
       // 关闭该弹框
       yourMethodName(){
         this.$refs.VueBaseDialog.close();
+      },
+      // 弹框开始关闭时回调
+      dialogClose(){
+        // ...
+      },
+      // 弹框关闭动画结束时回调
+      dialogClosed(){
+        // ...
       }
     }
   }

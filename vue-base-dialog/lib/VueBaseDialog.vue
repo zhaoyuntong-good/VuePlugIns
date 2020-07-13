@@ -92,12 +92,16 @@ export default {
       this.mousemoveCallBack = null;
     },
     close(){
+      this.$emit('close');
       this.maskAnimation = 'mask-leave-active';
       this.dialogAnimation = this.dialogConfig.animationLeave ? this.dialogConfig.animationLeave : 'dialog-leave-active';
       setTimeout(() => {
         this.$parent.dialogConfig.name = '';
       },this.dialogConfig.destroyTime ? this.dialogConfig.destroyTime : 300)
     }
+  },
+  destroyed(){
+    this.$emit('closed');
   }
 }
 </script>
